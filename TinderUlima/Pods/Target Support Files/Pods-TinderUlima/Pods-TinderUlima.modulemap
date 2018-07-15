@@ -1,0 +1,6 @@
+framework module Pods_TinderUlima {
+  umbrella header "Pods-TinderUlima-umbrella.h"
+
+  export *
+  module * { export * }
+}
