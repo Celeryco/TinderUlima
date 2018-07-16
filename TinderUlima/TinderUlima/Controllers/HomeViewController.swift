@@ -8,9 +8,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
-    @IBOutlet weak var cardView: UIView!
+class HomeViewController: UIViewController, OnCarDraggedDelegate {
+    
+    func OnCardDragged() {
+        
+    }
+    
+    @IBOutlet weak var cardView: CardView!{
+        didSet{
+            cardView.onCarDraggedDelegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

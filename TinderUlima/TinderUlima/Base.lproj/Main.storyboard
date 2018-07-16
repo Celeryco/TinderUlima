@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Box-gG-RSQ">
                                 <rect key="frame" x="12" y="72" width="351" height="559"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7V-Lx-ZWi" userLabel="Card">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7V-Lx-ZWi" userLabel="Card" customClass="CardView" customModule="TinderUlima" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="490"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe Card" translatesAutoresizingMaskIntoConstraints="NO" id="hpr-0Q-Eqh">
