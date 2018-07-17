@@ -7,19 +7,38 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var profileDisplayName: UILabel!
+    
+    @IBOutlet weak var profileEmail: UILabel!
+    
+    var currentUserProfile: UserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.profileImage.layer.cornerRadius = self.profileImage.bounds.size.height / 2
+        self.profileImage.layer.borderColor = UIColor.white.cgColor
+        self.profileImage.layer.borderWidth = 1.0
+        self.profileImage.clipsToBounds = true
+        
+        self.profileDisplayName.text = self.currentUserProfile?.displayName
+        self.profileEmail.text = self.currentUserProfile?.email
+        
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func signOut(_ sender: UIButton) {
+        try! Auth.auth().signOut()
+        UserDefaults.standard.set(false, forKey: "status")
+        Switcher.updateRootVC()
     }
+    
     
 
     /*

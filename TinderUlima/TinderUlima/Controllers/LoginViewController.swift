@@ -7,9 +7,23 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var passTextField: UITextField!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var subLoginButton: UIButton!
+    
+    @IBOutlet weak var loginAccLabel: UILabel!
+    
+    var registerMode : Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +35,68 @@ class LoginViewController: UIViewController {
     @objc func handleTap(sender: UIButton){
         self.view.endEditing(true)
     }
+    
+    func showAlert(title: String, message: String){
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    @IBAction func doLogin(_ sender: UIButton) {
+        if self.emailTextField.text == "" || self.passTextField.text == ""{
+            self.showAlert(title: "Error", message: "Algunos de los campos estan vacios")
+        }else{
+            if let email = self.emailTextField.text, let password = self.passTextField.text{
+                if registerMode{
+                    Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
+                        if error != nil{
+                            self.showAlert(title: "Error", message: error!.localizedDescription)
+                            
+                        }else{
+                            print("Cuenta creada")
+                            if let user = user{
+                                let userData = ["provider" : user.providerID, "email": user.email, "profileImage" : "...", "displayName" : "Eros"] as [String : Any]
+                                DatabaseService.instance.createFirebaseDBUser(userUID: user.uid, userData: userData)
+                                
+                            }
+                            //Aqui se pasa informacion de tener que hacerlo
+                            UserDefaults.standard.set(true, forKey: "status")
+                            Switcher.updateRootVC()
+                        }
+                    })
+                }else{
+                    Auth.auth().signIn(withEmail: email, password: password, completion: {(user, error) in
+                        if error != nil{
+                            self.showAlert(title: "Error", message: error!.localizedDescription)
+                            
+                        }else{
+                            print("Login correcto")
+                            //Aqui se pasa informacion de tener que hacerlo
+                            UserDefaults.standard.set(true, forKey: "status")
+                            Switcher.updateRootVC()
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    @IBAction func doSubLogin(_ sender: UIButton) {
+        if self.registerMode{
+            self.loginButton.setTitle("Login", for: .normal)
+            self.loginAccLabel.text = "¿Eres nuevo?"
+            self.subLoginButton.setTitle("Registrate", for: .normal)
+            self.registerMode = false
+        }else{
+            self.loginButton.setTitle("Crear Cuenta", for: .normal)
+            self.loginAccLabel.text = "¿Ya tienes cuenta?"
+            self.subLoginButton.setTitle("Login", for: .normal)
+            self.registerMode = true
+        }
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 

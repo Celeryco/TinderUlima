@@ -19,6 +19,9 @@
 		00A5D31E20FD74C000206D87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5D31D20FD74C000206D87 /* LoginViewController.swift */; };
 		00A5D32020FD91A300206D87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5D31F20FD91A300206D87 /* ProfileViewController.swift */; };
 		00A5D32320FD990300206D87 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5D32220FD990300206D87 /* UIViewExt.swift */; };
+		00A5D32620FDA4E900206D87 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5D32520FDA4E900206D87 /* DatabaseService.swift */; };
+		00A5D32820FDDAF300206D87 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5D32720FDDAF300206D87 /* Switcher.swift */; };
+		00A5D32B20FDEA0800206D87 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5D32A20FDEA0800206D87 /* UserModel.swift */; };
 		6808D7A2C671CE47C8A3894F /* Pods_TinderUlima.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19CD7BB12E1453C85DBA964 /* Pods_TinderUlima.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		00A5D31D20FD74C000206D87 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		00A5D31F20FD91A300206D87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		00A5D32220FD990300206D87 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		00A5D32520FDA4E900206D87 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		00A5D32720FDDAF300206D87 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
+		00A5D32A20FDEA0800206D87 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0E3AF1C8F646B2502A5F2B9D /* Pods-TinderUlima.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderUlima.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinderUlima/Pods-TinderUlima.debug.xcconfig"; sourceTree = "<group>"; };
 		45E5200274595885C98E65D8 /* Pods-TinderUlima.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderUlima.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinderUlima/Pods-TinderUlima.release.xcconfig"; sourceTree = "<group>"; };
 		D19CD7BB12E1453C85DBA964 /* Pods_TinderUlima.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderUlima.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +81,8 @@
 		00984EE320FC05A800BA7E04 /* TinderUlima */ = {
 			isa = PBXGroup;
 			children = (
+				00A5D32920FDE9F400206D87 /* Models */,
+				00A5D32420FDA4CF00206D87 /* Services */,
 				00A5D32120FD98E400206D87 /* Extensions */,
 				00984EFE20FC6B1E00BA7E04 /* Views */,
 				00984EFB20FC244B00BA7E04 /* Helpers */,
@@ -104,6 +112,7 @@
 			children = (
 				00984EFC20FC245D00BA7E04 /* ImageHelper.swift */,
 				00984F0120FC6B7200BA7E04 /* Protocols.swift */,
+				00A5D32720FDDAF300206D87 /* Switcher.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -122,6 +131,22 @@
 				00A5D32220FD990300206D87 /* UIViewExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		00A5D32420FDA4CF00206D87 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				00A5D32520FDA4E900206D87 /* DatabaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		00A5D32920FDE9F400206D87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00A5D32A20FDEA0800206D87 /* UserModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		845CC42A4CAC54D79DE5EFF5 /* Frameworks */ = {
@@ -218,6 +243,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TinderUlima/Pods-TinderUlima-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -225,6 +251,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -260,6 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A5D32820FDDAF300206D87 /* Switcher.swift in Sources */,
+				00A5D32620FDA4E900206D87 /* DatabaseService.swift in Sources */,
 				00A5D31E20FD74C000206D87 /* LoginViewController.swift in Sources */,
 				00984F0220FC6B7200BA7E04 /* Protocols.swift in Sources */,
 				00984EE520FC05A800BA7E04 /* AppDelegate.swift in Sources */,
@@ -268,6 +297,7 @@
 				00A5D32020FD91A300206D87 /* ProfileViewController.swift in Sources */,
 				00984F0020FC6B4500BA7E04 /* CardView.swift in Sources */,
 				00984EFA20FC23B400BA7E04 /* HomeViewController.swift in Sources */,
+				00A5D32B20FDEA0800206D87 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,12 +20,18 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
         }
     }
     
+    var currentUserModel : UserModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let titleView = NavigationImageView()
         titleView.image = UIImage(named: "Actions")
         self.navigationItem.titleView = titleView
+        
+        DatabaseService.instance.observeUserProfile{(userDict) in
+            self.currentUserModel = userDict
+        }
         
         let profileButton = UIButton(type: .custom)
         profileButton.setImage(UIImage(named: "Login"), for: .normal)
@@ -38,8 +44,9 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
     
     @objc func goToProfile(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
-        present(loginVC, animated: true, completion: nil)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        profileVC.currentUserProfile = self.currentUserModel
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     
