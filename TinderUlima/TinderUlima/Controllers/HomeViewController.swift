@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, OnCarDraggedDelegate {
     
     func OnCardDragged() {
-        
+    
     }
     
     @IBOutlet weak var cardView: CardView!{
@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let titleView = NavigationImageView()
         titleView.image = UIImage(named: "Actions")
         self.navigationItem.titleView = titleView

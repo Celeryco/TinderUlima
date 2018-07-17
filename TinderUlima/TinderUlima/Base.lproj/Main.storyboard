@@ -40,13 +40,31 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="up2-y0-5tf">
+                                                <rect key="frame" x="25" y="25" width="158" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="158" id="hiC-WS-cZH"/>
+                                                    <constraint firstAttribute="height" constant="70" id="jAy-JB-yuS"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nope Image" translatesAutoresizingMaskIntoConstraints="NO" id="1Ka-cO-uvg">
+                                                <rect key="frame" x="168" y="25" width="158" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="Jrk-L3-Ejy"/>
+                                                    <constraint firstAttribute="width" constant="158" id="b9d-zm-kH3"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="up2-y0-5tf" firstAttribute="top" secondItem="w7V-Lx-ZWi" secondAttribute="top" constant="25" id="0LQ-ty-atN"/>
+                                            <constraint firstAttribute="trailing" secondItem="1Ka-cO-uvg" secondAttribute="trailing" constant="25" id="7O4-2f-V93"/>
                                             <constraint firstItem="hpr-0Q-Eqh" firstAttribute="leading" secondItem="w7V-Lx-ZWi" secondAttribute="leading" id="B9k-cJ-Xdu"/>
                                             <constraint firstItem="LCV-Z6-A8H" firstAttribute="leading" secondItem="w7V-Lx-ZWi" secondAttribute="leading" constant="14" id="Duc-90-OpQ"/>
                                             <constraint firstAttribute="trailing" secondItem="oNp-ii-3ND" secondAttribute="trailing" constant="12" id="Fdw-nW-FoI"/>
                                             <constraint firstAttribute="bottom" secondItem="LCV-Z6-A8H" secondAttribute="bottom" constant="15" id="HYU-q5-8kA"/>
+                                            <constraint firstItem="1Ka-cO-uvg" firstAttribute="top" secondItem="w7V-Lx-ZWi" secondAttribute="top" constant="25" id="Iye-DT-dwI"/>
+                                            <constraint firstItem="up2-y0-5tf" firstAttribute="leading" secondItem="w7V-Lx-ZWi" secondAttribute="leading" constant="25" id="LWC-bc-rEd"/>
                                             <constraint firstItem="oNp-ii-3ND" firstAttribute="top" secondItem="w7V-Lx-ZWi" secondAttribute="top" constant="8" id="NId-nm-c4R"/>
                                             <constraint firstAttribute="width" secondItem="w7V-Lx-ZWi" secondAttribute="height" multiplier="117:163" id="SPO-Cd-KPE"/>
                                             <constraint firstItem="LCV-Z6-A8H" firstAttribute="top" secondItem="oNp-ii-3ND" secondAttribute="bottom" constant="15" id="Zbg-xA-Ygv"/>
@@ -55,6 +73,10 @@
                                             <constraint firstItem="hpr-0Q-Eqh" firstAttribute="top" secondItem="w7V-Lx-ZWi" secondAttribute="top" id="w4b-Pg-Jus"/>
                                             <constraint firstItem="oNp-ii-3ND" firstAttribute="leading" secondItem="w7V-Lx-ZWi" secondAttribute="leading" constant="12" id="w81-Wy-Deu"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="dislikeImage" destination="1Ka-cO-uvg" id="09i-py-yB4"/>
+                                            <outlet property="likeImage" destination="up2-y0-5tf" id="MmF-1p-bnE"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe6-5b-7fp" userLabel="Buttons">
                                         <rect key="frame" x="0.0" y="490" width="351" height="69"/>
@@ -126,7 +148,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Like" width="170" height="114"/>
         <image name="Nope" width="63" height="63"/>
+        <image name="Nope Image" width="197" height="130"/>
         <image name="Rewind" width="51" height="51"/>
         <image name="Super Like" width="51" height="51"/>
         <image name="Swipe Card" width="356" height="507"/>
