@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import SDWebImage
 
 class HomeViewController: UIViewController, OnCarDraggedDelegate {
     
-    func OnCardDragged() {
-    
+    func OnCardDragged(){
+        if self.users.count > 0{
+            self.updateImage(uid: self.users[self.random(0..<self.users.count)].uid)
+        }
     }
     
     @IBOutlet weak var cardView: CardView!{
@@ -21,7 +26,8 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
     }
     
     var currentUserModel : UserModel?
-
+    var users = [UserModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,8 +35,17 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
         titleView.image = UIImage(named: "Actions")
         self.navigationItem.titleView = titleView
         
-        DatabaseService.instance.observeUserProfile{(userDict) in
-            self.currentUserModel = userDict
+        Auth.auth().addStateDidChangeListener{
+            (auth, user) in
+            if let user = user {
+                print("El usuario ingreso correctamente")
+                self.getUsers()
+            }else{
+                print("Logout")
+            }
+            DatabaseService.instance.observeUserProfile{(userDict) in
+                self.currentUserModel = userDict
+            }
         }
         
         let profileButton = UIButton(type: .custom)
@@ -49,7 +64,28 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
+    func getUsers(){
+        DatabaseService.instance.User_Ref.observeSingleEvent(of: .value){(snapshot) in
+            let userSnapshots = snapshot.children.compactMap{UserModel(snapshot: $0 as! DataSnapshot)}
+            for user in userSnapshots{
+                print("user: \(user)")
+                self.users.append(user)
+            }
+        }
+    }
     
+    func updateImage(uid: String){
+        DatabaseService.instance.User_Ref.observeSingleEvent(of: .value){(snapshot) in
+            if let userProfile = UserModel(snapshot: snapshot){
+                self.cardView.cardProfileImage.sd_setImage(with: URL(string: userProfile.profileImage), completed: nil)
+                self.cardView.cardProfileLabel.text = userProfile.displayName
+            }
+        }
+    }
+    
+    func random(_ range: Range<Int>) -> Int{
+        return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound)))
+    }
     /*
     // MARK: - Navigation
 

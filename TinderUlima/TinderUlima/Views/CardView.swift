@@ -14,6 +14,10 @@ class CardView: UIView {
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var dislikeImage: UIImageView!
 
+    @IBOutlet weak var cardProfileImage: UIImageView!
+    @IBOutlet weak var cardProfileLabel: UILabel!
+    
+
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,6 +54,9 @@ class CardView: UIView {
         if gestureRecognizer.state == .ended{
             if self.center.x < (self.bounds.width / 2 - 100){
                 print("dislike")
+                if let delegate = onCarDraggedDelegate{
+                    delegate.OnCardDragged()
+                }
             }
             if self.center.x > (self.bounds.width / 2 + 100){
                 print("like")
@@ -65,9 +72,7 @@ class CardView: UIView {
             self.center = CGPoint(x: initialX, y: initialY)
         }
         
-        if let delegate = onCarDraggedDelegate{
-            delegate.OnCardDragged()
-        }
+        
     }
     
     

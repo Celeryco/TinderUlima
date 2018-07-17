@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import RevealingSplashView
+
 
 class LoginViewController: UIViewController {
 
@@ -24,8 +26,15 @@ class LoginViewController: UIViewController {
     
     var registerMode : Bool = true
     
+    let revealingSplashScreen = RevealingSplashView(iconImage: UIImage(named:"splash-icon")!, iconInitialSize: CGSize(width:80, height:80), backgroundColor: UIColor.white)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.revealingSplashScreen)
+        self.revealingSplashScreen.animationType = SplashAnimationType.popAndZoomOut
+        self.revealingSplashScreen.startAnimation()
+
         
         self.view.bindKeyboard()
         let tap  = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))

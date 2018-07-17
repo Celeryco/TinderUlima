@@ -74,6 +74,8 @@
                                             <constraint firstItem="oNp-ii-3ND" firstAttribute="leading" secondItem="w7V-Lx-ZWi" secondAttribute="leading" constant="12" id="w81-Wy-Deu"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cardProfileImage" destination="oNp-ii-3ND" id="wV6-cr-6ai"/>
+                                            <outlet property="cardProfileLabel" destination="LCV-Z6-A8H" id="nxt-Xp-RAb"/>
                                             <outlet property="dislikeImage" destination="1Ka-cO-uvg" id="09i-py-yB4"/>
                                             <outlet property="likeImage" destination="up2-y0-5tf" id="MmF-1p-bnE"/>
                                         </connections>
@@ -322,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pEB-zl-dpo">
-                                <rect key="frame" x="60" y="50" width="294" height="370"/>
+                                <rect key="frame" x="60" y="50" width="294" height="430"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="YQD-FL-Ia6">
                                         <rect key="frame" x="57" y="0.0" width="180" height="180"/>
@@ -351,6 +353,13 @@
                                         </state>
                                         <connections>
                                             <action selector="signOut:" destination="85S-Dc-9q9" eventType="touchUpInside" id="WGi-kO-40v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KZ-2W-dKq">
+                                        <rect key="frame" x="85" y="400" width="124" height="30"/>
+                                        <state key="normal" title="Importar Usuarios"/>
+                                        <connections>
+                                            <action selector="importUsers:" destination="85S-Dc-9q9" eventType="touchUpInside" id="CaP-QN-I7p"/>
                                         </connections>
                                     </button>
                                 </subviews>
