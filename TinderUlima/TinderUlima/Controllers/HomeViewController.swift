@@ -26,8 +26,21 @@ class HomeViewController: UIViewController, OnCarDraggedDelegate {
         let titleView = NavigationImageView()
         titleView.image = UIImage(named: "Actions")
         self.navigationItem.titleView = titleView
+        
+        let profileButton = UIButton(type: .custom)
+        profileButton.setImage(UIImage(named: "Login"), for: .normal)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.addTarget(self, action: #selector(goToProfile(sender:)), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
     }
     
+    @objc func goToProfile(sender: UIButton){
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        present(loginVC, animated: true, completion: nil)
+    }
     
     
     /*

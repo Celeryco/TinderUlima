@@ -14,6 +14,8 @@ class CardView: UIView {
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var dislikeImage: UIImageView!
 
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -30,7 +32,7 @@ class CardView: UIView {
         
         //Valores que se utilizaran para efectos de rotacion y movimiento
         let xFromCenter = self.bounds.width / 2 - self.center.x
-        var rotate = CGAffineTransform(rotationAngle: xFromCenter / 50)
+        var rotate = CGAffineTransform(rotationAngle: xFromCenter / 100)
         let scale = min(100 / abs(xFromCenter) , 1)
         var finalTransform = rotate.scaledBy(x: scale, y: scale)
         self.transform = finalTransform
